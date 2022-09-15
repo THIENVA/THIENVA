@@ -1,0 +1,12 @@
+FROM python:3.10.0-alpine3.14
+
+RUN addgroup -g 499 -S app \
+    && adduser -u 499 -S app -G app -h /opt/app -D \
+    && pip install pyyaml
+
+ADD app/ /opt/app
+
+USER app
+ENV CONFIG_PATH=/opt/app/config.yaml
+
+ENTRYPOINT python -u /opt/app/SimpleHTTPServer.py

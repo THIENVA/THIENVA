@@ -1,0 +1,49 @@
+<form class="form" *ngIf="visible" #editUserForm="ngForm">
+    <mat-card>
+        <mat-card-title>Edit user</mat-card-title>
+        <mat-card-content>
+
+            <mat-form-field>
+                <input matInput name='name' placeholder='Name' [(ngModel)]="user.name" required
+                       #firstnameModel="ngModel">
+            </mat-form-field>
+            <div class="errors-space"
+                 *ngIf="firstnameModel.invalid && (firstnameModel.touched || firstnameModel.dirty)">
+                {{ "Field is required" }}
+            </div>
+
+            <mat-form-field>
+                <input matInput name='lastname' placeholder='Last name' [(ngModel)]="user.lastname" required
+                       #lastnameModel="ngModel">
+            </mat-form-field>
+            <div class="errors-space" *ngIf="lastnameModel.invalid && (lastnameModel.touched || lastnameModel.dirty)">
+                {{ "Field is required" }}
+            </div>
+
+            <mat-form-field>
+                <input matInput name='city' placeholder='City' [(ngModel)]="user.city" required #cityModel="ngModel">
+            </mat-form-field>
+            <div class="errors-space" *ngIf="cityModel.invalid && (cityModel.touched || cityModel.dirty)">
+                {{ "Field is required" }}
+            </div>
+
+            <mat-form-field>
+                <input matInput name='country' placeholder='Country' [(ngModel)]="user.country" required
+                       #countryModel="ngModel">
+            </mat-form-field>
+            <div class="errors-space" *ngIf="countryModel.invalid && (countryModel.touched || countryModel.dirty)">
+                {{ "Field is required" }}
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+
+
+    <div class="buttons">
+        <button mat-button type="button" mat-raised-button (click)='return()'>Back</button>
+        <button mat-button type="submit" mat-raised-button color='primary' (click)='submitForm()'
+                [disabled]="!editUserForm.form.valid">Submit
+        </button>
+    </div>
+
+</form>

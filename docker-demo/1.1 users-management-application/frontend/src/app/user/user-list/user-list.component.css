@@ -1,0 +1,35 @@
+.users-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    min-width: 300px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 800px;
+}
+
+button {
+    margin: 2px;
+}
+
+.button-cell-1 {
+    flex: 0.7;
+}
+
+.mat-button {
+    white-space: normal;
+}
+
+mat-header-cell {
+    display: flex;
+    justify-content: center;
+}
+
+mat-cell {
+    display: flex;
+    justify-content: center;
+}

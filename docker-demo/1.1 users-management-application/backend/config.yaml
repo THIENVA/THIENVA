@@ -1,0 +1,7 @@
+# Example configuration
+database:
+  user: backend
+  host: postgres
+  database: backend
+  password: backend#123
+  port: 5432

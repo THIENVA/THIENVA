@@ -1,0 +1,5 @@
+allowed_paths:
+  - /docker
+  - /home
+  - /users
+  - /user/1

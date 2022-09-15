@@ -1,0 +1,23 @@
+# start mongodb and mongo-express
+docker-compose -f docker-compose.yaml up
+
+# start node server
+npm install
+node server.js
+
+# access the nodejs application from browser
+http://localhost:3000
+
+# build a docker image from the application
+docker build -t my-app:1.0 .       
+
+# access aws and docker
+aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 095511556979.dkr.ecr.ap-southeast-1.amazonaws.com
+
+docker login
+
+# tag the docker image  
+docker tag my-app:1.0 095511556979.dkr.ecr.ap-southeast-1.amazonaws.com/my-app:1.0
+
+# push image to aws ecr
+docker push 095511556979.dkr.ecr.ap-southeast-1.amazonaws.com/my-app:1.0

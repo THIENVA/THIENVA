@@ -1,0 +1,17 @@
+# Stage 1: Angular application build
+FROM node:16.13.0-alpine3.14 AS BUILD
+ARG BACKEND_API_URL="http://localhost:8000"
+WORKDIR /opt/app
+
+COPY *.json /opt/app/
+RUN npm install
+
+COPY src /opt/app/src
+RUN sed -i -e "s#BACKEND_API_URL#$BACKEND_API_URL#g" /opt/app/src/environments/environment.prod.ts
+RUN npm run build-prod
+
+# Stage 2: Nginx (Frontend) image
+FROM nginx:1.21.4-alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 9000
+COPY --from=BUILD /opt/app/dist/users-management-application /usr/share/nginx/frontend/html

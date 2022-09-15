@@ -1,0 +1,13 @@
+FROM ubuntu:18.04
+
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install default-jre -y \
+    && addgroup --gid 499 app \
+    && adduser --uid 499 --gid 499 --home /opt/app --disabled-password --gecos "" app
+
+ADD app/HelloWorldApp.jar /opt/app/HelloWorldApp.jar
+
+USER app
+
+CMD java -jar /opt/app/HelloWorldApp.jar

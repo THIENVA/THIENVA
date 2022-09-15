@@ -1,0 +1,33 @@
+version: "3.9"
+volumes:
+  uma-data:
+networks:
+  uma-network:
+services:
+  frontend:
+    build: ./frontend
+    ports:
+    - 9000:9000
+    networks:
+      - uma-network
+  backend:
+    build: ./backend
+    ports:
+    - 8000:8000
+    environment:
+      APP_MODE: database
+    volumes:
+      - ./backend/config.yaml:/opt/app/config.yaml
+    networks:
+      - uma-network
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:14.1-alpine3.14
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./database/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+      - uma-data:/var/lib/postgresql/data
+    networks:
+      - uma-network

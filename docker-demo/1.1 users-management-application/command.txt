@@ -1,0 +1,6 @@
+# start the node and mongodb
+docker-compose -f "docker-compose.dev.yml" up -d
+
+# access the nodejs application from browser
+http://localhost:8000
+

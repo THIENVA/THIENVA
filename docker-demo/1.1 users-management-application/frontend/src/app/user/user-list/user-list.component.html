@@ -1,0 +1,57 @@
+<div class="users-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- id column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let users">
+                {{users.id}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- name column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let users">
+                {{users.name}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- lastName column -->
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+            <mat-cell *matCellDef="let users">
+                {{users.lastname}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- city column -->
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+            <mat-cell *matCellDef="let users">
+                {{users.city}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- country column -->
+        <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
+            <mat-cell *matCellDef="let users">
+                {{users.country}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- edit column -->
+        <ng-container matColumnDef="edit">
+            <mat-header-cell class='button-cell-1' *matHeaderCellDef>Edit</mat-header-cell>
+            <mat-cell class='button-cell-1' *matCellDef="let users">
+                <button mat-button mat-raised-button color='primary' (click)='onEditClick(users)'>Edit</button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
