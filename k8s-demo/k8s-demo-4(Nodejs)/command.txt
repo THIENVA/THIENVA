@@ -1,0 +1,26 @@
+# Install Nodejs and npm to local machine
+sudo apt-get install nodejs
+sudo apt-get-install npm -y
+
+# Create package resources
+npm init -y
+npm install express
+
+# Dockerize Node application
+docker build . -t thienva/k8s-demo-4
+docker login
+docker push thienva/k8s-demo-4
+
+# Create deployment on minicube based on docker image
+kubectl create deploment k8s-emo-4 --image=thienva/k8s-demo-4
+
+# Scaling the deployment
+kubectl scale deployment k8s-demo-4 --replicas=3
+
+# Create LoadBalancer service
+kubectl expose deployment k8s-demo-4 --type=LoadBalancer --port=3000
+
+# Check the access of the app
+minikube service k8s-demo-4
+
+ 

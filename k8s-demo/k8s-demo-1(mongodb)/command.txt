@@ -1,0 +1,14 @@
+# Create the pod resource
+kubectl apply -f mongo-config.yaml -f mongo-secret.yaml -f mongo.yaml -f webapp.yaml
+
+# Check the resource
+kubectl get all
+kubectl get configmap
+kubectl get svc
+kubectl describe service webapp-service
+
+# Check the ip address of minicube and node
+minicube ip
+kubectl get node -o wide
+
+# Access the ip address by browser

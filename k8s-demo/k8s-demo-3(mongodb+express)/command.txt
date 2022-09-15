@@ -1,0 +1,10 @@
+# Create the resources
+kubectl apply -f mongo-deployment.yaml -f mongo-secret.yaml -f mongo-configmap.yaml -f mongo-express.yaml
+
+# Check the resources
+kubectl get all
+kubectl get svc
+minikube service mongo-service-express 
+
+# Access the LoadBalancer IP Address by Browser 
+minikube service mongo-express-service

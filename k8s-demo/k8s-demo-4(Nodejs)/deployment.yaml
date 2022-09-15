@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-demo-4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-demo-4
+  template:
+    metadata:
+      labels:
+        app: k8s-demo-4
+    spec:
+      containers:
+      - name: k8s-demo-4
+        image: thienva/k8s-demo-4
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
